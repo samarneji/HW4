@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @Slf4j
 //@TestMethodOrder(MethodOrderer.Alphanumeric.class)
 @DisplayName("Test User class")
-public class TestUserService {
+ class TestUserService {
     private static User user;
 
     @Autowired
@@ -24,37 +24,37 @@ public class TestUserService {
 
     @Test
     @DisplayName("Test Ajouter User")
-    public void AddUser() {
+     void AddUser() {
         user = new User();
         user.setFirstName("Samar");
         user.setLastName("Neji");
         user.setDateNaissance(new Date(18 / 1999));
         user.setRole(INGENIEUR);
         long id = userService.addUser(user).getId();
-        assertTrue(id != 0 );
+        assertNotEquals(0,id  );
     }
 
     @Test
-    public void testRetrieveAllUsers() {
+     void testRetrieveAllUsers() {
         assertTrue(userService.retrieveAllUsers().size() > 0);
     }
 
     @Test
     @DisplayName("Modifier un User ")
     @Order(4)
-    public void UpdateContract() {
+     void UpdateContract() {
         log.info("Update user");
         User user = userService.retrieveUser(1L);
         user.setFirstName("Asma");
         userService.updateUser(user);
         log.info("Update user first name");
-        assertTrue(userService.retrieveUser(user.getId()).getFirstName().equals("Asma"));
+        assertEquals("Asma",userService.retrieveUser(user.getId()).getFirstName());
     }
 
     @Test
     @DisplayName("Select les users")
     @Order(3)
-    public void getAllUsers() {
+     void getAllUsers() {
         log.info("Get all users");
         assertTrue(userService.retrieveAllUsers().size() > 0);
     }
@@ -62,7 +62,7 @@ public class TestUserService {
     @Test
     @DisplayName("Supprimer un user ")
     @Order(5)
-    public void RemoveContract() {
+     void RemoveContract() {
         log.info("Remove user");
         userService.deleteUser(user.getId());
         assertFalse(userService.retrieveAllUsers().contains(user));
