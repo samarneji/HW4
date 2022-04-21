@@ -54,16 +54,14 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public void deleteUser(String id) {
-		userRepository.deleteById(Long.parseLong(id));
+	public void deleteUser(Long id) {
+		userRepository.deleteById(id);
 	}
 
 	@Override
-	public User retrieveUser(String id) {
+	public User retrieveUser(Long id) {
 		l.info("in  retrieveUser id = " + id);
-		//User u =  userRepository.findById(Long.parseLong(id)).orElse(null);
-		//int i = 1/0; 
-		User u =  userRepository.findById(Long.parseLong(id)).get(); 
+		User u =  userRepository.findById(id).get();
 		l.info("user returned : " + u);
 		return u; 
 	}

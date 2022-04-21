@@ -27,7 +27,11 @@ public class User implements Serializable {
 	private String firstName; 
 	
 	private String lastName;
-	
+
+	public String getFirstName() {
+		return firstName;
+	}
+
 	@Temporal(TemporalType.DATE)
 	private Date dateNaissance;
 	
@@ -87,6 +91,8 @@ public class User implements Serializable {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	
 
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 }
